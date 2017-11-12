@@ -4,7 +4,7 @@ The collection of device drivers for ESP8266.
 
 - [DS18B20](src/esp_ds18b20) OneWire temperature sensor.
 - [DHT22 (AM2302)](src/esp_dht22) temperature and humidity sensor.
-- [SHT21 (Si7020)](src/esp_sht21) temperature and humidity sensor.
+- [SHT21 (Si7021)](src/esp_sht21) temperature and humidity sensor.
 
 ## Build environment.
 
