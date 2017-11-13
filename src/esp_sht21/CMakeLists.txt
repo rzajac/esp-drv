@@ -27,6 +27,6 @@ target_include_directories(esp_sht21 PUBLIC
     ${esp_i2c_INCLUDE_DIRS}
     ${ESP_USER_CONFIG_DIR})
 
-esp_gen_lib(esp_sht21
-    ${ESP_CMAKE_FIND_DIR}
-    ${esp_i2c_LIBRARIES})
+target_link_libraries(esp_sht21 ${esp_i2c_LIBRARIES})
+
+esp_gen_lib(esp_sht21)

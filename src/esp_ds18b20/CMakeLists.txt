@@ -31,8 +31,9 @@ target_include_directories(esp_ds18b20 PUBLIC
     ${esp_tim_INCLUDE_DIRS}
     ${ESP_USER_CONFIG_DIR})
 
-esp_gen_lib(esp_ds18b20
-    ${ESP_CMAKE_FIND_DIR}
+target_link_libraries(esp_ds18b20
     ${esp_ow_LIBRARIES}
     ${esp_eb_LIBRARIES}
     ${esp_tim_LIBRARIES})
+
+esp_gen_lib(esp_ds18b20)

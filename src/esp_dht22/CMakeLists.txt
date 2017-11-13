@@ -27,6 +27,6 @@ target_include_directories(esp_dht22 PUBLIC
     ${esp_gpio_INCLUDE_DIRS}
     ${ESP_USER_CONFIG_DIR})
 
-esp_gen_lib(esp_dht22
-    ${ESP_CMAKE_FIND_DIR}
-    ${esp_gpio_LIBRARIES})
+target_link_libraries(esp_dht22 ${esp_gpio_LIBRARIES})
+
+esp_gen_lib(esp_dht22)
