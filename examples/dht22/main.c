@@ -14,67 +14,16 @@
  * under the License.
  */
 
-#include <user_interface.h>
+
 #include <esp_gpio.h>
 #include <esp_dht22.h>
-#include <mem.h>
 #include <esp_sdo.h>
+#include <esp_util.h>
+#include <user_interface.h>
+#include <mem.h>
 
 os_timer_t timer;
 
-/**
- * Rise base to power of.
- *
- * From: http://bbs.espressif.com/viewtopic.php?t=246
- *
- * @param base The number.
- * @param exp  The exponent.
- *
- * @return Product.
- */
-static int ICACHE_FLASH_ATTR
-power(int base, int exp)
-{
-  int result = 1;
-  while (exp) {
-    result *= base;
-    exp--;
-  }
-
-  return result;
-}
-
-/**
- * Get string representation of float.
- *
- * From: http://bbs.espressif.com/viewtopic.php?t=246
- *
- * Warning: limited to 15 chars & non-reentrant.
- *          e.g., don't use more than once per os_printf call.
- *
- * @param num       The float to convert to string.
- * @param decimals  The number of decimal places.
- *
- * @return The float string representation.
- */
-static char *ICACHE_FLASH_ATTR
-ftoa(float num, uint8_t decimals)
-{
-  static char *buf[16];
-
-  int whole = (int) num;
-  int decimal = (int) ((num - whole) * power(10, decimals));
-  if (decimal < 0) {
-    // get rid of sign on decimal portion
-    decimal -= 2 * decimal;
-  }
-
-  char *pattern[10]; // setup printf pattern for decimal portion
-  os_sprintf((char *) pattern, "%%d.%%0%dd", decimals);
-  os_sprintf((char *) buf, (const char *) pattern, whole, decimal);
-
-  return (char *) buf;
-}
 
 void ICACHE_FLASH_ATTR
 sys_init_done(void* arg)
@@ -90,8 +39,8 @@ sys_init_done(void* arg)
     return;
   }
 
-  os_printf("Temp: %s\n", ftoa(dev->temp, 2));
-  os_printf("Hum: %s\n", ftoa(dev->hum, 2));
+  os_printf("Temp: %s\n", esp_util_ftoa(dev->temp, 3));
+  os_printf("Hum: %s\n", esp_util_ftoa(dev->hum, 3));
   os_printf("--------------------\n");
   os_free(dev);
 }

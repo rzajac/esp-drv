@@ -14,5 +14,5 @@ Before you can start communicating with SHT21 you have to call
 `esp_sht21_init`. You need to call it only once unless you change the GPIO
 pins setup somewhere else in your code.
 
-See driver documentation in [esp_sht21.h](include/esp_sht21.h) header file 
-for more details.
+See [example program](../../examples/sht21) and driver documentation in 
+[esp_sht21.h](include/esp_sht21.h) header file for more details.

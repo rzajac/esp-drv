@@ -15,13 +15,12 @@
  */
 
 
-#include <user_interface.h>
-#include <osapi.h>
 #include <esp_ds18b20.h>
 #include <esp_gpio.h>
 #include <esp_eb.h>
 #include <esp_sdo.h>
 #include <esp_util.h>
+#include <user_interface.h>
 
 // List of found devices on the OneWire bus.
 static esp_ow_device *root = NULL;

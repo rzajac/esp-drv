@@ -7,6 +7,6 @@ Demonstrates how to search OneWire bus for DS18b20.
 ```
 $ cd build
 $ cmake ..
-$ make ds18b20_temp_flash
+$ make ds18b20_temp_ex_flash
 $ miniterm.py /dev/ttyUSB0 74880
 ```

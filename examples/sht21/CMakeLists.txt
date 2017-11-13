@@ -17,18 +17,18 @@ find_package(esp_sdo REQUIRED)
 find_package(esp_i2c REQUIRED)
 find_package(esp_util REQUIRED)
 
-add_executable(sht21_example main.c ${ESP_USER_CONFIG})
+add_executable(sht21_ex main.c ${ESP_USER_CONFIG})
 
-target_include_directories(sht21_example PUBLIC
+target_include_directories(sht21_ex PUBLIC
     ${ESP_USER_CONFIG_DIR}
     ${esp_sdo_INCLUDE_DIRS}
     ${esp_i2c_INCLUDE_DIRS}
     ${esp_util_INCLUDE_DIRS})
 
-target_link_libraries(sht21_example
+target_link_libraries(sht21_ex
     ${esp_sdo_LIBRARIES}
     ${esp_i2c_LIBRARIES}
     ${esp_util_LIBRARIES}
     esp_sht21)
 
-esp_gen_exec_targets(sht21_example)
+esp_gen_exec_targets(sht21_ex)

@@ -217,17 +217,21 @@ esp_ds18b20_search(uint8_t gpio_num, bool in_alert, esp_ow_device **list)
 esp_ow_device *ICACHE_FLASH_ATTR
 esp_ds18b20_new_dev(uint8_t *rom)
 {
-  esp_ow_device *device = os_zalloc(sizeof(esp_ow_device));
-  esp_ds18b20_st *st = os_zalloc(sizeof(esp_ds18b20_st));
+  esp_ow_device *device = esp_ow_new_dev(rom);
+  if (device == NULL) return NULL;
 
-  os_memcpy(device->rom, rom, 8);
+  esp_ds18b20_st *st = os_zalloc(sizeof(esp_ds18b20_st));
+  if (st == NULL) {
+    os_free(device);
+    return NULL;
+  }
+
   st->last_temp = ESP_DS18B20_TEMP_ERR;
   st->retries = -1;
   device->custom = st;
 
   return device;
 }
-
 
 esp_ow_device *ICACHE_FLASH_ATTR
 esp_ds18b20_get(uint8_t gpio_num)

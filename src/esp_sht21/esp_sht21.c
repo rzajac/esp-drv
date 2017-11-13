@@ -15,7 +15,6 @@
  */
 
 #include <esp_sht21.h>
-#include <osapi.h>
 
 static uint8_t ICACHE_FLASH_ATTR
 calc_crc(uint8_t init, const uint8_t *data, uint8_t len)

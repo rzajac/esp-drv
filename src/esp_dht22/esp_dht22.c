@@ -14,15 +14,16 @@
  * under the License.
  */
 
+
 #include <esp_dht22.h>
 #include <esp_gpio.h>
 #include <mem.h>
 #include <user_interface.h>
 
 #define BUS_LOW(gpio_num) (GPIO_OUT_EN_S = (0x1 << (gpio_num)))
-#define BUS_HIGH(gpio_num) (GPIO_OUT_EN_C = (0x1 << (gpio_num)))
 #define BUS_RELEASE(gpio_num) (GPIO_OUT_EN_C = (0x1 << (gpio_num)))
 #define BUS_READ(gpio_num) ((GPIO_IN & (0x1 << (gpio_num))) != 0)
+
 
 /**
  * Measure number of 10us slots the state was kept.

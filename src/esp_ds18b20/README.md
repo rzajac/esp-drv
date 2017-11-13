@@ -18,7 +18,7 @@ anymore.
 Most of the operations with the DS18B20 library is based on passing pointers 
 to the `esp_ow_device` structure which has pointer to `esp_ds18b20_st` 
 status structure. The `esp_ds18b20_st` keeps track of last scratch pad read
-the last temperature conversion.
+and last temperature conversion.
 
 ```
 esp_ow_device *device;
@@ -34,12 +34,11 @@ esp_ow_dev *device = esp_ds18b20_new_dev(rom);
 
 ``` 
 
-With DS18B20 temperature measurement takes between 94 and 750ms depending 
-on resolution. You don't want to block the CPU for that long waiting for 
-example using some kind of delay. That's why library is using event bus 
-(esp_eb) to emmit events when the temperature conversion is ready to read.
-Check [example program](../../examples/ds18b20_temp) to see how it should be 
-done.   
+Temperature measurement with DS18B20 takes between 94 and 750ms depending 
+on resolution. You don't want to block the CPU for that long using some kind 
+of delay. That's why library is using event bus (esp_eb) to emmit events when 
+the temperature conversion is ready.
 
-See driver documentation in [esp_ds18b20.h](include/esp_ds18b20.h) header file 
-for more details.
+Check [example program](../../examples/ds18b20_temp) to see how it should be 
+done and driver documentation in [esp_ds18b20.h](include/esp_ds18b20.h) 
+header file for more details.

@@ -14,6 +14,7 @@
  * under the License.
  */
 
+
 #ifndef ESP_DHT22_H
 #define ESP_DHT22_H
 
@@ -39,6 +40,7 @@ typedef enum {
 // Espressif SDK missing includes.
 void ets_isr_mask(unsigned intr);
 void ets_isr_unmask(unsigned intr);
+
 
 /**
  * Initialize DHT22.

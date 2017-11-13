@@ -29,5 +29,4 @@ target_include_directories(esp_sht21 PUBLIC
 
 esp_gen_lib(esp_sht21
     ${ESP_CMAKE_FIND_DIR}
-    ${esp_i2c_LIBRARIES}
-    ${esp_tim_LIBRARIES})
+    ${esp_i2c_LIBRARIES})

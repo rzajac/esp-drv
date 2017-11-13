@@ -10,6 +10,6 @@ Demonstrates how to:
 ```
 $ cd build
 $ cmake ..
-$ make sht21_example_flash
+$ make sht21_ex_flash
 $ miniterm.py /dev/ttyUSB0 74880
 ```

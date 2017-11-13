@@ -14,69 +14,16 @@
  * under the License.
  */
 
+
 #include <esp_sht21.h>
 #include <esp_sdo.h>
+#include <esp_util.h>
 #include <user_interface.h>
-#include <osapi.h>
 
 #define SCL GPIO0
 #define SDA GPIO2
 
 os_timer_t timer;
-
-/**
- * Rise base to power of.
- *
- * From: http://bbs.espressif.com/viewtopic.php?t=246
- *
- * @param base The number.
- * @param exp  The exponent.
- *
- * @return Product.
- */
-static int ICACHE_FLASH_ATTR
-power(int base, int exp)
-{
-  int result = 1;
-  while (exp) {
-    result *= base;
-    exp--;
-  }
-
-  return result;
-}
-
-/**
- * Get string representation of float.
- *
- * From: http://bbs.espressif.com/viewtopic.php?t=246
- *
- * Warning: limited to 15 chars & non-reentrant.
- *          e.g., don't use more than once per os_printf call.
- *
- * @param num       The float to convert to string.
- * @param decimals  The number of decimal places.
- *
- * @return The float string representation.
- */
-static char *ICACHE_FLASH_ATTR
-ftoa(float num, uint8_t decimals)
-{
-  static char *buf[16];
-
-  int whole = (int) num;
-  int decimal = (int) ((num - whole) * power(10, decimals));
-  if (decimal < 0) {
-    // get rid of sign on decimal portion
-    decimal -= 2 * decimal;
-  }
-
-  char *pattern[10]; // setup printf pattern for decimal portion
-  os_sprintf((char *) pattern, "%%d.%%0%dd", decimals);
-  os_sprintf((char *) buf, (const char *) pattern, whole, decimal);
-
-  return (char *) buf;
-}
 
 void ICACHE_FLASH_ATTR
 run_sht21()
@@ -107,12 +54,12 @@ run_sht21()
   err = esp_sht21_get_rh(&value);
   if (err != ESP_I2C_OK) os_printf("Get RH error: %d\n", err);
 
-  os_printf("Humidity: %s%%\n", ftoa(value, 2));
+  os_printf("Humidity: %s%%\n", esp_util_ftoa(value, 2));
 
   err = esp_sht21_get_temp_last(&value);
   if (err != ESP_I2C_OK) os_printf("Get TEMP error: %d\n", err);
 
-  os_printf("Temperature: %s deg. C\n", ftoa(value, 2));
+  os_printf("Temperature: %s deg. C\n", esp_util_ftoa(value, 2));
 }
 
 void ICACHE_FLASH_ATTR

@@ -16,16 +16,16 @@
 find_package(esp_sdo REQUIRED)
 find_package(esp_util REQUIRED)
 
-add_executable(dht22_temp_hum main.c ${ESP_USER_CONFIG})
+add_executable(dht22_ex main.c ${ESP_USER_CONFIG})
 
-target_include_directories(dht22_temp_hum PUBLIC
+target_include_directories(dht22_ex PUBLIC
     ${ESP_USER_CONFIG_DIR}
     ${esp_sdo_INCLUDE_DIRS}
     ${esp_util_INCLUDE_DIRS})
 
-target_link_libraries(dht22_temp_hum
+target_link_libraries(dht22_ex
     ${esp_sdo_LIBRARIES}
     ${esp_util_LIBRARIES}
     esp_dht22)
 
-esp_gen_exec_targets(dht22_temp_hum)
+esp_gen_exec_targets(dht22_ex)

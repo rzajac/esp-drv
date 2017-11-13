@@ -31,19 +31,22 @@ $ make install
 
 ## Examples.
 
-- [DHT22 get temperature and humidity](examples/dht22_temp_hum)
+- [DHT22 get temperature and humidity](examples/dht22)
 - [DS18B20 get temperature](examples/ds18b20_temp)
 - [Search for DS18B20](examples/ds18b20_search)
+- [SHT21 get temperature and humidity](examples/sht21)
 
 # Dependencies.
 
 This library depends on:
 
+- https://github.com/rzajac/esp-ecl
 - https://github.com/rzajac/esp-prot
 
 to install dependency run:
 
 ```
+$ wget -O - https://raw.githubusercontent.com/rzajac/esp-ecl/master/install.sh | bash
 $ wget -O - https://raw.githubusercontent.com/rzajac/esp-prot/master/install.sh | bash
 ```
 

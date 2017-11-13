@@ -15,5 +15,5 @@
 
 add_subdirectory(ds18b20_search)
 add_subdirectory(ds18b20_temp)
-add_subdirectory(dht22_temp_hum)
-add_subdirectory(sht21_example)
+add_subdirectory(dht22)
+add_subdirectory(sht21)

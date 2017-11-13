@@ -18,8 +18,8 @@
 #ifndef ESP_SHT21_H
 #define ESP_SHT21_H
 
-#include <c_types.h>
 #include <esp_i2c.h>
+#include <c_types.h>
 
 #define ESP_SHT21_ADDRESS 0x40
 // Measure relative humidity. Hold Master Mode.
@@ -55,6 +55,7 @@
 #define ESP_SHT21_RES1 0x2
 // RH: 11bit TEMP: 11bit
 #define ESP_SHT21_RES0 0x3
+
 
 /**
  * Initialize SHT21.

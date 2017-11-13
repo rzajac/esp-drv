@@ -95,7 +95,7 @@ esp_ds18b20_search(uint8_t gpio_num, bool in_alert, esp_ow_device **list);
  *
  * @param rom The pointer to 8 byte ROM address
  *
- * @return The device.
+ * @return The device or NULL on error.
  */
 esp_ow_device *ICACHE_FLASH_ATTR
 esp_ds18b20_new_dev(uint8_t *rom);

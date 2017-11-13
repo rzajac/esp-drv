@@ -18,20 +18,20 @@ find_package(esp_ow REQUIRED)
 find_package(esp_eb REQUIRED)
 find_package(esp_util REQUIRED)
 
-add_executable(ds18b20_search main.c ${ESP_USER_CONFIG})
+add_executable(ds18b20_search_ex main.c ${ESP_USER_CONFIG})
 
-target_include_directories(ds18b20_search PUBLIC
+target_include_directories(ds18b20_search_ex PUBLIC
     ${ESP_USER_CONFIG_DIR}
     ${esp_sdo_INCLUDE_DIRS}
     ${esp_ow_INCLUDE_DIRS}
     ${esp_eb_INCLUDE_DIRS}
     ${esp_util_INCLUDE_DIRS})
 
-target_link_libraries(ds18b20_search
+target_link_libraries(ds18b20_search_ex
     ${esp_sdo_LIBRARIES}
     ${esp_ow_LIBRARIES}
     ${esp_eb_LIBRARIES}
     ${esp_util_LIBRARIES}
     esp_ds18b20)
 
-esp_gen_exec_targets(ds18b20_search)
+esp_gen_exec_targets(ds18b20_search_ex)
